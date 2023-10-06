@@ -1,7 +1,8 @@
 {
   "name": "recipe-io",
-  "private": true,
+  "description": "An Ionic project",
   "version": "0.0.1",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -43,9 +44,13 @@
     "eslint": "^8.35.0",
     "eslint-plugin-react": "^7.32.2",
     "jsdom": "^22.1.0",
+    "prettier": "^3.0.3",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitest": "^0.32.2"
   },
-  "description": "An Ionic project"
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true
+  }
 }
