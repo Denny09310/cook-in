@@ -20,4 +20,14 @@ export default defineConfig({
       '~': path.resolve(__dirname, 'src'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: (id) => {
+          if (/@ionic|@stencil/i.test(id)) return 'ionic';
+          if (/redux|rtk/i.test(id)) return 'redux';
+        },
+      },
+    },
+  },
 });
