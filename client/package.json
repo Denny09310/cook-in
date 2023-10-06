@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "test.e2e": "cypress run",
     "test.unit": "vitest",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-assets": "pwa-assets-generator --preset minimal public/favicon.png"
   },
   "dependencies": {
     "@capacitor/app": "5.0.6",
@@ -38,6 +39,7 @@
     "@types/jest": "^29.5.5",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
+    "@vite-pwa/assets-generator": "^0.0.10",
     "@vitejs/plugin-legacy": "^4.0.2",
     "@vitejs/plugin-react": "^4.0.1",
     "cypress": "^12.7.0",
@@ -47,6 +49,7 @@
     "prettier": "^3.0.3",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
+    "vite-plugin-pwa": "^0.16.5",
     "vitest": "^0.32.2"
   },
   "prettier": {
