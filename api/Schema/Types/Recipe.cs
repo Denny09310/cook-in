@@ -14,6 +14,14 @@ public class Recipe
     [Unicode(false)]
     public string Title { get; set; } = null!;
 
+    [Required]
+    [Unicode(false)]
+    public string Instructions { get; set; } = null!;
+
+    [Required]
+    [Unicode(false)]
+    public string Image { get; set; } = null!;
+
     [InverseProperty(nameof(Ingredient.Recipe))]
     public virtual ICollection<Ingredient> Ingredients { get; set; } = new HashSet<Ingredient>();
 }
