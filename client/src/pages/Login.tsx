@@ -1,9 +1,11 @@
-import { IonButton, IonContent, IonIcon, IonPage, IonText } from '@ionic/react';
+import { IonContent, IonPage, IonText } from '@ionic/react';
 import React from 'react';
-import { logoGoogle, logoFacebook } from 'ionicons/icons';
-
-import styles from './Login.module.scss';
 import { Link } from 'react-router-dom';
+
+import GoogleSignInButton from '~/components/GoogleSignInButton';
+
+import FacebookSignInButton from '~/components/FacebookSignInButton';
+import styles from './Login.module.scss';
 
 const Login: React.FC = () => {
   return (
@@ -12,14 +14,8 @@ const Login: React.FC = () => {
         <img className={styles.logo} src="/logo.png" alt="Application Logo" />
 
         <div className={styles['social-buttons-container']}>
-          <IonButton fill="outline" color="dark">
-            <IonIcon slot="start" icon={logoGoogle} />
-            Sign in with Google
-          </IonButton>
-          <IonButton fill="outline" color="dark">
-            <IonIcon slot="start" icon={logoFacebook} />
-            Sign in with Facebook
-          </IonButton>
+          <GoogleSignInButton />
+          <FacebookSignInButton />
         </div>
 
         <IonText className={styles['terms-and-conditions']}>
