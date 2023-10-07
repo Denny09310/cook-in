@@ -1,5 +1,5 @@
 using FastEndpoints.Swagger;
-using Recipe.Io.Schema;
+using Recipes.Io.Schema;
 
 var builder = WebApplication.CreateBuilder(args);
 

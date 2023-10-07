@@ -1,6 +1,6 @@
 using FastEndpoints.Swagger;
 
-namespace Recipe.Io.Extensions;
+namespace Recipes.Io.Extensions;
 
 internal static class SwaggerDocumentExtensions
 {

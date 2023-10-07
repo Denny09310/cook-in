@@ -1,4 +1,4 @@
-namespace Recipe.Io.Schema;
+namespace Recipes.Io.Schema;
 
 public class Query
 {

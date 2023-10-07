@@ -1,8 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
-using Recipe.Io.Data;
+using Recipes.Io.Data;
 
-namespace Recipe.Io.Extensions;
+namespace Recipes.Io.Extensions;
 
 internal static class DbContextExtensions
 {

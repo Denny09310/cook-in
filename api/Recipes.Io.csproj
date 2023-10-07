@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Recipe.Io</RootNamespace>
+    <RootNamespace>Recipes.Io</RootNamespace>
     <UserSecretsId>0a9a2fe2-ee4e-4b2d-b261-2490f3796d14</UserSecretsId>
   </PropertyGroup>
 
@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <Using Include="FastEndpoints" />
-    <Using Include="Recipe.Io.Extensions" />
+    <Using Include="Recipes.Io.Extensions" />
   </ItemGroup>
 
 </Project>
