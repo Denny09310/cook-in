@@ -11,7 +11,7 @@
     "test.e2e": "cypress run",
     "test.unit": "vitest",
     "lint": "eslint",
-    "generate-assets": "pwa-assets-generator --preset minimal public/favicon.png"
+    "generate-assets": "pwa-assets-generator --preset minimal public/logo.png"
   },
   "dependencies": {
     "@capacitor/app": "5.0.6",
