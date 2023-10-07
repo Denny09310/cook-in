@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddFastEndpoints();
 builder.Services.ConfigureSwaggerDocument();
+builder.Services.ConfigureDbContext("Default");
 
 builder.Services.AddGraphQLServer()
     .AddQueryType<Query>();
