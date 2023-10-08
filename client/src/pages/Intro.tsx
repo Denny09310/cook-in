@@ -23,9 +23,7 @@ const Intro: React.FC = () => {
 
     swiper.className = styles['slides-container'];
     swiper.pagination = {
-      el: `.${styles['swiper-pagination']}`,
-      renderBullet: (_index, className) =>
-        `<span className="${className} ${styles['swiper-bullet']}"><span>`,
+      type: 'bullets',
     };
     swiper.addEventListener('reachend', handleReachEnd);
 
@@ -36,17 +34,12 @@ const Intro: React.FC = () => {
 
   const handleReachEnd = () => setReachEnd(true);
 
-  const handleSkip = () => {
+  const handleFinish = () => {
     setIntroSeen(true);
-    router.push('/login', 'root', 'replace');
+    router.push('/login', 'forward', 'replace');
   };
 
   const handleNext = () => {
-    if (reachEnd) {
-      handleSkip();
-      return;
-    }
-
     const swiper = swiperContainerRef.current!;
     swiper.scrollBy({ behavior: 'smooth', left: 1 });
   };
@@ -70,16 +63,21 @@ const Intro: React.FC = () => {
             title="Cook with available ingredients"
             caption="Explore recipes by searching the ingredients available at home"
           />
-          <div className={styles['swiper-pagination']}></div>
         </swiper-container>
         <div className={styles.footer}>
-          <IonButton className={styles['skip-button']} fill="clear" onClick={handleSkip}>
+          <IonButton className={styles['skip-button']} fill="clear" onClick={handleFinish}>
             Skip
           </IonButton>
 
-          <IonButton className={styles['next-button']} onClick={handleNext}>
-            {reachEnd ? 'Finish' : 'Next'}
-          </IonButton>
+          {!reachEnd ? (
+            <IonButton className={styles['next-button']} onClick={handleNext}>
+              Next
+            </IonButton>
+          ) : (
+            <IonButton className={styles['next-button']} onClick={handleFinish}>
+              Finish
+            </IonButton>
+          )}
         </div>
       </IonContent>
     </IonPage>

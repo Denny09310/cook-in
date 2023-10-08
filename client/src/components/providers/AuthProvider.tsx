@@ -10,7 +10,7 @@ const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => onAuthStateChanged(auth, setUser), []);
 
-  if (!user) return <IonLoading isOpen />;
+  if (user === undefined) return <IonLoading isOpen />;
 
   return (
     <AuthContext.Provider value={{ user, isAuthenticated: user !== null }}>
