@@ -1,9 +1,12 @@
 import { IonButton, IonIcon, useIonRouter, useIonToast } from '@ionic/react';
-import { logoGoogle } from 'ionicons/icons';
 import { signInWithPopup } from 'firebase/auth';
+import { logoGoogle } from 'ionicons/icons';
+
 import { auth, googleProvider } from '~/configs/firebase';
 
-const GoogleSignInButton = () => {
+interface Props extends React.ComponentProps<typeof IonButton> {}
+
+const GoogleSignInButton: React.FC<Props> = (props) => {
   const router = useIonRouter();
   const [present] = useIonToast();
 
@@ -19,7 +22,7 @@ const GoogleSignInButton = () => {
       );
 
   return (
-    <IonButton fill="outline" color="dark" onClick={handleSignIn}>
+    <IonButton fill="outline" color="dark" onClick={handleSignIn} {...props}>
       <IonIcon slot="start" icon={logoGoogle} />
       Sign in with Google
     </IonButton>

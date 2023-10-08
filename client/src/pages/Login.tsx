@@ -1,21 +1,21 @@
-import { IonContent, IonPage, IonText } from '@ionic/react';
+import { IonContent, IonImg, IonPage, IonText } from '@ionic/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import FacebookSignInButton from '~/components/FacebookSignInButton';
 import GoogleSignInButton from '~/components/GoogleSignInButton';
 
-import FacebookSignInButton from '~/components/FacebookSignInButton';
 import styles from './Login.module.scss';
 
 const Login: React.FC = () => {
   return (
     <IonPage>
-      <IonContent className={styles.container}>
-        <img className={styles.logo} src="/logo.png" alt="Application Logo" />
+      <IonContent className={styles.container} scrollY={false}>
+        <IonImg className={styles.logo} src="/logo.png" alt="Application Logo" />
 
         <div className={styles['social-buttons-container']}>
           <GoogleSignInButton />
-          <FacebookSignInButton />
+          <FacebookSignInButton disabled />
         </div>
 
         <IonText className={styles['terms-and-conditions']}>

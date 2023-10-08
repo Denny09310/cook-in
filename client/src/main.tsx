@@ -3,14 +3,17 @@ import { Provider as ReduxStoreProvider } from 'react-redux';
 
 import App from '~/app';
 import { store } from '~/app/store';
-import AuthProvider from './components/providers/AuthProvider';
+import AuthProvider from '~/components/providers/AuthProvider';
+import ThemeProvider from '~/components/providers/ThemeProvider';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
 root.render(
   <ReduxStoreProvider store={store}>
     <AuthProvider>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </AuthProvider>
   </ReduxStoreProvider>,
 );
