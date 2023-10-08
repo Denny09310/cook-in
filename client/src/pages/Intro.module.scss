@@ -1,0 +1,46 @@
+.slides-container {
+  height: 90%;
+  width: 100%;
+  padding: 1rem;
+}
+
+.swiper-pagination {
+  position: absolute;
+  bottom: 5rem;
+  width: auto !important;
+  left: auto !important;
+}
+
+.swiper-bullet {
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+
+  background-color: var(--ion-color-primary);
+}
+
+.footer {
+  width: 100%;
+  padding: 1rem;
+
+  position: absolute;
+  bottom: 1rem;
+
+  display: inline-flex;
+  justify-content: space-between;
+
+  & ion-button {
+    --padding-start: 2rem;
+    --padding-end: 2rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+  }
+
+  & .skip-button {
+    --color: var(--ion-text-color);
+  }
+
+  & .next-button {
+    --box-shadow: none;
+  }
+}
