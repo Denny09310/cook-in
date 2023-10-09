@@ -17,6 +17,10 @@
     <!-- TypeScript Configuration -->
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
     <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+
+    <!-- Docker Configuration -->
+    <ContainerRepository>denny09310/cook-in</ContainerRepository>
+    <ContainerRuntimeIdentifier>linux-arm64</ContainerRuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>

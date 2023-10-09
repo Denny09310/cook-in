@@ -14,7 +14,7 @@ const root = createRoot(container!);
 root.render(
   <ReduxStoreProvider store={store}>
     <AuthProvider>
-      <ThemeProvider>
+      <ThemeProvider defaultTheme="light">
         <App />
       </ThemeProvider>
     </AuthProvider>
