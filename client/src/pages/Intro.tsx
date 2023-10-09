@@ -56,7 +56,7 @@ const Intro: React.FC = () => {
           <IntroSlide
             image={introImage2}
             title="Cooking made easier and fun"
-            caption="Recipes.Io helps you make any dish providing step by step instructions with the help of video clips"
+            caption="CookIn helps you make any dish providing step by step instructions with the help of video clips"
           />
           <IntroSlide
             image={introImage}

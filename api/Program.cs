@@ -1,4 +1,4 @@
-using Recipes.Io.Schema;
+using CookIn.Schema;
 
 var builder = WebApplication.CreateBuilder(args);
 

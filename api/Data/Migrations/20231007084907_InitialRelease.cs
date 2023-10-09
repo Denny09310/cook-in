@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Recipes.Io.Data.Migrations
+namespace CookIn.Data.Migrations
 {
     /// <inheritdoc />
     public partial class InitialRelease : Migration

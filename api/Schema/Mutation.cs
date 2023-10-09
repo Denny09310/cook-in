@@ -1,4 +1,4 @@
-namespace Recipes.Io.Schema;
+namespace CookIn.Schema;
 
 public class Mutation
 {
