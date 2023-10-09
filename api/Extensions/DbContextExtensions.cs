@@ -1,8 +1,8 @@
+using CookIn.Data;
 using Microsoft.EntityFrameworkCore;
 using MySqlConnector;
-using Recipes.Io.Data;
 
-namespace Recipes.Io.Extensions;
+namespace CookIn.Extensions;
 
 internal static class DbContextExtensions
 {

@@ -4,7 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Recipes.Io</RootNamespace>
+    <RootNamespace>CookIn</RootNamespace>
     <UserSecretsId>0a9a2fe2-ee4e-4b2d-b261-2490f3796d14</UserSecretsId>
   </PropertyGroup>
 
@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Using Include="Recipes.Io.Extensions" />
+    <Using Include="CookIn.Extensions" />
   </ItemGroup>
 
 </Project>

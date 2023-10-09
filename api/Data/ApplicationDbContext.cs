@@ -1,7 +1,7 @@
+using CookIn.Schema.Types;
 using Microsoft.EntityFrameworkCore;
-using Recipes.Io.Schema.Types;
 
-namespace Recipes.Io.Data;
+namespace CookIn.Data;
 
 public class ApplicationDbContext : DbContext
 {
