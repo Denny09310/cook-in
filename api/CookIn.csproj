@@ -11,7 +11,7 @@
 
     <!-- Spa Configuration -->
     <SpaRoot>C:\Users\KDenn\Projects\recipe-io\client\</SpaRoot>
-    <SpaProxyServerUrl>http://localhost:8100</SpaProxyServerUrl>
+    <SpaProxyServerUrl>https://localhost:8100</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>ionic serve</SpaProxyLaunchCommand>
 
     <!-- TypeScript Configuration -->
@@ -21,6 +21,7 @@
     <!-- Docker Configuration -->
     <ContainerRepository>denny09310/cook-in</ContainerRepository>
     <ContainerRuntimeIdentifier>linux-arm64</ContainerRuntimeIdentifier>
+    <ContainerImageTags>1.0.1-beta;latest</ContainerImageTags>
   </PropertyGroup>
 
   <ItemGroup>
