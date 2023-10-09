@@ -12,7 +12,10 @@ builder.Services.AddGraphQLServer()
 var app = builder.Build();
 
 app.UseHttpsRedirection();
+app.UseStaticFiles();
 
 app.MapGraphQL();
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
