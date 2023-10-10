@@ -5,40 +5,14 @@ import path from 'node:path';
 
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
-import sass from 'vite-plugin-sass-dts';
 import mkcert from 'vite-plugin-mkcert';
-import { VitePWA as pwa } from 'vite-plugin-pwa';
+import pwa from './vite.config.pwa';
+import sass, { css } from './vite.config.sass';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    react(),
-    legacy(),
-    mkcert(),
-    sass({
-      global: {
-        generate: true,
-        outputFilePath: path.resolve(__dirname, './src/style.d.ts'),
-      },
-    }),
-    pwa({ registerType: 'autoUpdate' }),
-  ],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "@/styles" as common;`,
-        importer(...args) {
-          if (args[0] !== '@/styles') {
-            return;
-          }
-
-          return {
-            file: `${path.resolve(__dirname, 'src/theme/variables')}`,
-          };
-        },
-      },
-    },
-  },
+  plugins: [react(), legacy(), mkcert(), sass(), pwa()],
+  css,
   test: {
     globals: true,
     environment: 'jsdom',
