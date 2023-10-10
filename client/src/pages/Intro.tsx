@@ -40,8 +40,8 @@ const Intro: React.FC = () => {
   };
 
   const handleNext = () => {
-    const swiper = swiperContainerRef.current!;
-    swiper.scrollBy({ behavior: 'smooth', left: 1 });
+    const swiperEl = swiperContainerRef.current!;
+    swiperEl.swiper.slideNext();
   };
 
   return (
