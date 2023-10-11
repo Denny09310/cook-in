@@ -2,12 +2,11 @@ using CookIn.Schema;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.ConfigureDbContext("Default");
+builder.Services.RegisterDbContext("Default");
+builder.Services.RegisterAuthentication(builder.Configuration);
 
-builder.Services.AddGraphQLServer()
-    .AddQueryType<Query>();
-//  .AddMutationType<Mutation>()
-//  .AddSubscriptionType<Subscription>();
+builder.Services.AddAuthorization();
+builder.Services.AddGraphQLServer().AddQueryType<Query>();
 
 var app = builder.Build();
 
@@ -19,6 +18,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapGraphQL();
 

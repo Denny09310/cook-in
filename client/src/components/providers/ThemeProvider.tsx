@@ -1,6 +1,9 @@
+import { IonLoading } from '@ionic/react';
 import { PropsWithChildren, useEffect } from 'react';
-import { useLocalStorage, useMediaQuery } from 'usehooks-ts';
+import { useMedia } from 'react-use';
 
+import { useStorage } from '~/app/hooks';
+import { THEME_UI_KEY } from '~/constants/storage';
 import { ThemeContext, type Theme } from '~/contexts/ThemeContext';
 
 interface Props {
@@ -10,24 +13,27 @@ interface Props {
 
 const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
   defaultTheme = 'system',
-  storageKey = 'theme-ui',
+  storageKey = THEME_UI_KEY,
   children,
 }) => {
-  const [theme, setTheme] = useLocalStorage(storageKey, defaultTheme);
-  const prefersDarkScheme = useMediaQuery('(prefers-color-scheme: dark)');
+  const {
+    loading,
+    state: [theme, setTheme],
+  } = useStorage(storageKey, defaultTheme);
+
+  const prefersDarkScheme = useMedia('(prefers-color-scheme: dark)');
+
+  const isDark = (theme === 'system' && prefersDarkScheme) || theme === 'dark';
 
   useEffect(() => {
-    const shouldToggleClass = (theme === 'system' && prefersDarkScheme) || theme === 'dark';
-    document.body.classList.toggle('dark', shouldToggleClass);
+    document.body.classList.toggle('dark', isDark);
   }, [theme, prefersDarkScheme]);
 
   const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
-  return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
-      {children}
-    </ThemeContext.Provider>
-  );
+  if (loading) return false;
+
+  return <ThemeContext.Provider value={{ theme, isDark, setTheme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };
 
 export default ThemeProvider;
