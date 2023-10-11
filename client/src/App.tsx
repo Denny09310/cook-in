@@ -3,7 +3,6 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
 
-import AppUpdater from '~/components/AppUpdater';
 import { INTRO_SEEN_KEY } from '~/constants/localStorage';
 import { useAuth } from '~/contexts/AuthContext';
 import Home from '~/pages/Home';
@@ -49,7 +48,6 @@ const App = () => {
           <Redirect from="/" to={redirectUrl} exact />
         </IonRouterOutlet>
       </IonReactRouter>
-      <AppUpdater />
     </IonApp>
   );
 };
