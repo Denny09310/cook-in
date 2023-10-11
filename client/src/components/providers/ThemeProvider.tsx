@@ -1,7 +1,9 @@
+import { IonLoading } from '@ionic/react';
 import { PropsWithChildren, useEffect } from 'react';
 import { useMedia } from 'react-use';
-import { useStorage } from '~/app/hooks';
 
+import { useStorage } from '~/app/hooks';
+import { THEME_UI_KEY } from '~/constants/storage';
 import { ThemeContext, type Theme } from '~/contexts/ThemeContext';
 
 interface Props {
@@ -11,7 +13,7 @@ interface Props {
 
 const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
   defaultTheme = 'system',
-  storageKey = 'theme-ui',
+  storageKey = THEME_UI_KEY,
   children,
 }) => {
   const {
@@ -29,7 +31,7 @@ const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
 
   const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
-  if (loading) return null;
+  if (loading) return false;
 
   return <ThemeContext.Provider value={{ theme, isDark, setTheme, toggleTheme }}>{children}</ThemeContext.Provider>;
 };

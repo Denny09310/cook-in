@@ -7,7 +7,7 @@ import introImage1 from '~/assets/on-boarding-1.png';
 import introImage2 from '~/assets/on-boarding-2.png';
 import introImage from '~/assets/on-boarding-3.png';
 import IntroSlide from '~/components/IntroSlide';
-import { INTRO_SEEN_KEY } from '~/constants/localStorage';
+import { INTRO_SEEN_KEY } from '~/constants/storage';
 
 import styles from './Intro.module.scss';
 import { useStorage } from '~/app/hooks';
