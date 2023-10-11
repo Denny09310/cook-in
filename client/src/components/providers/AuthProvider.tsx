@@ -12,11 +12,7 @@ const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
   if (user === undefined) return <IonLoading isOpen />;
 
-  return (
-    <AuthContext.Provider value={{ user, isAuthenticated: user !== null }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={{ user, isAuthenticated: user !== null }}>{children}</AuthContext.Provider>;
 };
 
 export default AuthProvider;

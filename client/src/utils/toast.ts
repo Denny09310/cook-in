@@ -1,10 +1,5 @@
 import type { ToastOptions as ToastOptionsPrimitive } from '@ionic/react';
-import {
-  alertCircleOutline,
-  checkmarkCircleOutline,
-  informationCircleOutline,
-  warningOutline,
-} from 'ionicons/icons';
+import { alertCircleOutline, checkmarkCircleOutline, informationCircleOutline, warningOutline } from 'ionicons/icons';
 
 import { dismiss, present } from './overlay';
 
