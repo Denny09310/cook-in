@@ -1,8 +1,8 @@
-import { IonApp, IonLoading, IonRouterOutlet, setupIonicReact } from '@ionic/react';
+import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
-import { useStorage } from '~/app/hooks';
+import { useStorageValue } from '~/app/storage';
 import { INTRO_SEEN_KEY } from '~/constants/storage';
 import { useAuth } from '~/contexts/AuthContext';
 import Home from '~/pages/Home';
@@ -32,10 +32,7 @@ setupIonicReact();
 
 const App = () => {
   const { isAuthenticated } = useAuth();
-  const {
-    loading,
-    state: [introSeen],
-  } = useStorage(INTRO_SEEN_KEY, false);
+  const { loading, value: introSeen } = useStorageValue(INTRO_SEEN_KEY, false);
 
   const redirectUrl = introSeen ? (isAuthenticated ? '/home' : '/login') : '/intro';
 

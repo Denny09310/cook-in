@@ -1,8 +1,7 @@
-import { IonLoading } from '@ionic/react';
 import { PropsWithChildren, useEffect } from 'react';
 import { useMedia } from 'react-use';
 
-import { useStorage } from '~/app/hooks';
+import { useStorage } from '~/app/storage';
 import { THEME_UI_KEY } from '~/constants/storage';
 import { ThemeContext, type Theme } from '~/contexts/ThemeContext';
 
