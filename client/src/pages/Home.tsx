@@ -6,7 +6,7 @@ import { auth } from '~/configs/firebase';
 const Home: React.FC = () => {
   return (
     <IonPage>
-      <IonHeader>
+      <IonHeader className="ion-no-border">
         <IonToolbar>
           <IonTitle>Page Title</IonTitle>
         </IonToolbar>
