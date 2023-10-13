@@ -1,4 +1,4 @@
-namespace CookIn.Schema;
+namespace Schema;
 
 public class Subscription
 {
