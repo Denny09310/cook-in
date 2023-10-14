@@ -11,7 +11,8 @@
     "test.e2e": "cypress run",
     "test.unit": "vitest",
     "lint": "eslint",
-    "generate-assets": "pwa-assets-generator --preset minimal public/logo.png"
+    "generate-assets": "pwa-assets-generator --preset minimal public/logo.png",
+    "generate-graphql": "graphql-codegen --config graphql-config.ts"
   },
   "dependencies": {
     "@capacitor/app": "5.0.6",
@@ -26,6 +27,7 @@
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "firebase": "^10.4.0",
+    "graphql": "^16.8.1",
     "ionicons": "^7.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -37,6 +39,10 @@
   },
   "devDependencies": {
     "@capacitor/cli": "5.4.2",
+    "@graphql-codegen/cli": "^5.0.0",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "@graphql-codegen/typescript-rtk-query": "^3.0.0",
+    "@rtk-query/graphql-request-base-query": "^2.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.4.3",
