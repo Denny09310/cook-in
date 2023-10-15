@@ -1,0 +1,11 @@
+{
+  "ignores": [
+    "@capacitor/*",
+    "@types/*",
+    "@testing-library/*",
+    "esbuild-runner",
+    "eslint-plugin-react",
+    "virtual:pwa-register",
+    "~"
+  ]
+}
