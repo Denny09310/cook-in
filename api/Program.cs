@@ -1,12 +1,15 @@
-using CookIn.Schema;
+using FastEndpoints.Swagger;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegisterDbContext("Default");
 builder.Services.RegisterAuthentication(builder.Configuration);
 
+builder.Services.RegisterEndpoints();
+builder.Services.RegisterSwaggerDocument();
+
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddAuthorization();
-builder.Services.AddGraphQLServer().AddQueryType<Query>();
 
 var app = builder.Build();
 
@@ -16,13 +19,17 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
+app.UseImagesStaticFiles();
+
 app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapGraphQL();
+app.UseRegisteredEndpoints();
+app.UseSwaggerGen();
 
 app.MapFallbackToFile("index.html");
 

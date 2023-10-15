@@ -14,7 +14,7 @@ const DAYS_UNIT = 24 * 60;
 /**
  * The current version of the service worker.
  */
-const SERVICE_WORKER_VERSION = '1.0.3';
+const SERVICE_WORKER_VERSION = '1.0.3.1';
 
 if (DEBUG_MODE) {
   console.debug(`Service worker version ${SERVICE_WORKER_VERSION} loading...`);
