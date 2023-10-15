@@ -1,18 +1,15 @@
+using FastEndpoints.Swagger;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegisterDbContext("Default");
 builder.Services.RegisterAuthentication(builder.Configuration);
 
+builder.Services.RegisterEndpoints();
+builder.Services.RegisterSwaggerDocument();
+
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddAuthorization();
-builder.Services.AddGraphQLServer()
-    .AddQueryType<Query>()
-    .AddMutationType<Mutation>()
-    .AddSubscriptionType<Subscription>()
-    .AddMutationConventions(applyToAllMutations: false)
-    .AddInMemorySubscriptions()
-    .RegisterDbContext<ApplicationDbContext>(DbContextKind.Pooled)
-    .ModifyRequestOptions(x => x.IncludeExceptionDetails = builder.Environment.IsDevelopment());
 
 var app = builder.Build();
 
@@ -31,9 +28,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseWebSockets();
-
-app.MapGraphQL();
+app.UseRegisteredEndpoints();
+app.UseSwaggerGen();
 
 app.MapFallbackToFile("index.html");
 

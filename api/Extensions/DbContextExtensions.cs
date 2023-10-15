@@ -7,7 +7,7 @@ namespace CookIn.Extensions;
 internal static class DbContextExtensions
 {
     internal static IServiceCollection RegisterDbContext(this IServiceCollection services, string connectionName) =>
-        services.AddPooledDbContextFactory<ApplicationDbContext>((sp, opt) =>
+        services.AddDbContext<ApplicationDbContext>((sp, opt) =>
         {
             var configuration = sp.GetRequiredService<IConfiguration>();
             var connectionString = configuration.GetConnectionString("Default");
