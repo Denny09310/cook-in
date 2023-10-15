@@ -3,6 +3,8 @@ import { BackgroundSyncPlugin } from 'workbox-background-sync';
 import { registerRoute } from 'workbox-routing';
 import { NetworkOnly } from 'workbox-strategies';
 
+import { version } from '../package.json';
+
 declare let self: ServiceWorkerGlobalScope;
 
 const componentName = 'Service Worker';
@@ -14,7 +16,7 @@ const DAYS_UNIT = 24 * 60;
 /**
  * The current version of the service worker.
  */
-const SERVICE_WORKER_VERSION = '1.0.3.2';
+const SERVICE_WORKER_VERSION = version;
 
 if (DEBUG_MODE) {
   console.debug(`Service worker version ${SERVICE_WORKER_VERSION} loading...`);

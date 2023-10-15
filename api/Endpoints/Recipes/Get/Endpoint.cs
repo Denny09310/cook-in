@@ -18,6 +18,7 @@ sealed class GetRecipesEndpoint : Endpoint<GetRecipesRequest, GetRecipesResponse
         var take = req.Page * req.PageSize;
 
         Response.Recipes = _dbContext.Recipes.Skip(skip)
+            .OrderBy(x => x.Title)
             .Take(take).Select(Map.FromEntity);
 
         return SendOkAsync(Response, ct);
