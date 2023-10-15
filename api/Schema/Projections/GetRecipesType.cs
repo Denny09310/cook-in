@@ -1,4 +1,5 @@
 using HotChocolate.Resolvers;
+using Microsoft.AspNetCore.Http.Extensions;
 
 namespace Schema.Projections;
 
@@ -19,6 +20,9 @@ public class GetRecipesType : ObjectType<Recipe>
         var httpContext = ctx.Services.GetRequiredService<IHttpContextAccessor>().HttpContext;
         var image = ctx.Parent<Recipe>().Image;
 
-        return $"{httpContext!.Request.Path}/{image}.jpg";
+        var request = httpContext!.Request;
+        var baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
+
+        return $"{baseUrl}/images/{image}.jpg";
     }
 }

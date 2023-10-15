@@ -22,7 +22,10 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
+app.UseImagesStaticFiles();
+
 app.UseRouting();
 
 app.UseAuthentication();

@@ -22,8 +22,7 @@ const Home: React.FC = () => {
   const { data, isLoading, refetch } = useGetRecipesQuery();
 
   const handleRefresh = (e: RefresherCustomEvent) => refetch().then(e.detail.complete);
-  const handleInfinite = (e: InfiniteScrollCustomEvent) =>
-    refetch({ after: data?.recipes?.edges?.at(-1)?.cursor }).then(() => e.target.complete());
+  const handleInfinite = (e: InfiniteScrollCustomEvent) => refetch().then(() => e.target.complete());
 
   return (
     <IonPage>
