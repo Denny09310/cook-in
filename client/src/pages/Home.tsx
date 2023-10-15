@@ -16,13 +16,19 @@ import {
 import React from 'react';
 
 import RecipesInfiniteList from '~/components/RecipesInfiniteList';
-import { useGetRecipesQuery } from '~/graphql/queries/GetRecipes.generated';
+import { useGetRecipesQuery } from '~/app/services/recipes';
+import { useCounter } from 'react-use';
 
 const Home: React.FC = () => {
-  const { data, isLoading, refetch } = useGetRecipesQuery();
+  const [page, { inc: nextPage }] = useCounter(1);
+
+  const { data, isLoading, refetch } = useGetRecipesQuery({ page, pageSize: 15 });
 
   const handleRefresh = (e: RefresherCustomEvent) => refetch().then(e.detail.complete);
-  const handleInfinite = (e: InfiniteScrollCustomEvent) => refetch().then(() => e.target.complete());
+  const handleInfinite = (e: InfiniteScrollCustomEvent) => {
+    nextPage();
+    refetch().then(() => e.target.complete());
+  };
 
   return (
     <IonPage>
