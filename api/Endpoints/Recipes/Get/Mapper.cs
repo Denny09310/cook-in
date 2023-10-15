@@ -2,10 +2,25 @@
 
 sealed class Mapper : Mapper<GetRecipesRequest, GetRecipesResponse.Recipe, Recipe>
 {
-    public override GetRecipesResponse.Recipe FromEntity(Recipe e) => new()
+    private readonly IHttpContextAccessor _accessor;
+
+    public Mapper(IHttpContextAccessor accessor)
     {
-        Id = e.Id,
-        Image = e.Image,
-        Title = e.Title
-    };
+        _accessor = accessor;
+    }
+
+    public override GetRecipesResponse.Recipe FromEntity(Recipe e)
+    {
+        var httpContext = _accessor.HttpContext;
+
+        var request = httpContext!.Request;
+        var baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}/images";
+
+        return new()
+        {
+            Id = e.Id,
+            Image = $"{baseUrl}/{e.Image}.jpg",
+            Title = e.Title
+        };
+    }
 }
