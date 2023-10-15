@@ -10,7 +10,7 @@
     <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
 
     <!-- Spa Configuration -->
-    <SpaRoot>C:\Users\KDenn\Projects\recipe-io\client\</SpaRoot>
+    <SpaRoot>C:\Users\KDenn\Projects\cook-in\client\</SpaRoot>
     <SpaProxyServerUrl>https://localhost:8100</SpaProxyServerUrl>
     <SpaProxyLaunchCommand>ionic serve</SpaProxyLaunchCommand>
 
