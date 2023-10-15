@@ -21,15 +21,19 @@ import React from 'react';
 import { menu, notifications } from 'ionicons/icons';
 import { useCounter } from 'react-use';
 import { useGetRecipesQuery } from '~/app/services/recipes';
-import RecipesInfiniteList from '~/components/RecipesInfiniteList';
+import RecipesList from '~/components/RecipesList';
 import styles from './Home.module.scss';
 
 const Home: React.FC = () => {
-  const [page, { inc: nextPage }] = useCounter(1);
+  const [page, { inc: nextPage, reset }] = useCounter(1);
 
   const { data, isLoading, refetch } = useGetRecipesQuery({ page, pageSize: 15 });
 
-  const handleRefresh = (e: RefresherCustomEvent) => refetch().then(e.detail.complete);
+  const handleRefresh = (e: RefresherCustomEvent) => {
+    reset();
+    refetch().then(e.detail.complete);
+  };
+
   const handleInfinite = (e: InfiniteScrollCustomEvent) => {
     nextPage();
     refetch().then(() => e.target.complete());
@@ -59,7 +63,7 @@ const Home: React.FC = () => {
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent />
         </IonRefresher>
-        <RecipesInfiniteList data={data} />
+        <RecipesList data={data} />
         <IonInfiniteScroll onIonInfinite={handleInfinite}>
           <IonInfiniteScrollContent />
         </IonInfiniteScroll>
