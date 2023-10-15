@@ -1,4 +1,6 @@
-﻿namespace Endpoints.GetRecipes;
+﻿using System.ComponentModel;
+
+namespace Endpoints.GetRecipes;
 
 sealed class GetRecipesRequest
 {
