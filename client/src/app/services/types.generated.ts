@@ -92,8 +92,3 @@ export type Subscription = {
   __typename?: 'Subscription';
   messageChanged: Scalars['String']['output'];
 };
-
-export type GetRecipesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetRecipesQuery = { __typename?: 'Query', recipes?: { __typename?: 'RecipesConnection', totalCount: number, nodes?: Array<{ __typename?: 'GetRecipesType', id: string, title: string, image?: string }> } };
