@@ -1,0 +1,7 @@
+.title {
+  font-weight: bold;
+
+  & .highlight-primary {
+    color: var(--ion-color-primary);
+  }
+}
