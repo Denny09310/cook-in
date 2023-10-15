@@ -1,4 +1,3 @@
-using CookIn.Schema.Types;
 using Microsoft.EntityFrameworkCore;
 
 namespace CookIn.Data;

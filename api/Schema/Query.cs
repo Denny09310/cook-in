@@ -1,6 +1,8 @@
-namespace CookIn.Schema;
+namespace Schema;
 
 public class Query
 {
-    public string Instructions => "Hello, World!";
+    [UsePaging(IncludeTotalCount = true)]
+    [GraphQLType<ListType<GetRecipesType>>]
+    public IQueryable<Recipe> GetRecipes(ApplicationDbContext dbContext) => dbContext.Recipes;
 }

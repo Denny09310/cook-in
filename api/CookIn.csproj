@@ -41,7 +41,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Using Include="CookIn.Data" />
     <Using Include="CookIn.Extensions" />
+    <Using Include="Schema" />
+    <Using Include="Schema.Types" />
+    <Using Include="Schema.Projections" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Assets/Images" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

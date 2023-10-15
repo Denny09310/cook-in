@@ -1,0 +1,13 @@
+query getRecipes {
+  recipes {
+    totalCount
+    edges {
+      cursor
+      node {
+        id
+        title
+        image
+      }
+    }
+  }
+}

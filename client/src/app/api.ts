@@ -1,8 +1,11 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { graphqlRequestBaseQuery } from '@rtk-query/graphql-request-base-query';
+import { GraphQLClient } from 'graphql-request';
 
-const baseUrl = import.meta.env.BASE_URL;
+const client = new GraphQLClient('/graphql');
 
 export const api = createApi({
-  baseQuery: fetchBaseQuery({ baseUrl }),
+  //@ts-ignore
+  baseQuery: graphqlRequestBaseQuery({ client }),
   endpoints: () => ({}),
 });

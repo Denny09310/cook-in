@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace CookIn.Schema.Types;
+namespace Schema.Types;
 
 public class Ingredient
 {
