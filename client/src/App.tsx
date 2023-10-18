@@ -3,9 +3,9 @@ import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
 import { useStorageValue } from '~/app/storage';
+import Tabs from '~/components/Tabs';
 import { INTRO_SEEN_KEY } from '~/constants/storage';
 import { useAuth } from '~/contexts/AuthContext';
-import Home from '~/pages/Home';
 import Intro from '~/pages/Intro';
 import Login from '~/pages/Login';
 
@@ -34,7 +34,7 @@ const App = () => {
   const { isAuthenticated } = useAuth();
   const { loading, value: introSeen } = useStorageValue(INTRO_SEEN_KEY, false);
 
-  const redirectUrl = introSeen ? (isAuthenticated ? '/home' : '/login') : '/intro';
+  const redirectUrl = introSeen ? (isAuthenticated ? '/tabs' : '/login') : '/intro';
 
   if (loading) return false;
 
@@ -42,7 +42,7 @@ const App = () => {
     <IonApp>
       <IonReactRouter>
         <IonRouterOutlet>
-          <Route path="/home" component={Home} exact />
+          <Route path="/tabs" render={(props) => <Tabs {...props} />} />
 
           <Route path="/login" component={Login} exact />
           <Route path="/intro" component={Intro} exact />

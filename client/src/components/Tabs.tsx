@@ -1,0 +1,52 @@
+import { IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
+import { bookmark, bookmarkOutline, home, homeOutline } from 'ionicons/icons';
+import React from 'react';
+import { Redirect, Route, RouteComponentProps, match } from 'react-router';
+
+import Favourites from '~/pages/Favourites';
+import Home from '~/pages/Home';
+import styles from './Tabs.module.scss';
+
+const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
+  const routes = configureRoutes(match);
+
+  return (
+    <IonTabs>
+      <IonRouterOutlet>
+        <Route path={routes.home.path} component={Home} exact />
+        <Route path={routes.favourites.path} component={Favourites} exact />
+        <Redirect from="/tabs" to={routes.home.path} exact />
+      </IonRouterOutlet>
+
+      <IonTabBar slot="bottom">
+        {Object.values(routes).map(({ icon, iconActive, path, title }) => (
+          <IonTabButton key={title} tab={title} href={path}>
+            <IonIcon className={styles.selected} icon={iconActive} />
+            <IonIcon className={styles.unselected} icon={icon} />
+          </IonTabButton>
+        ))}
+      </IonTabBar>
+    </IonTabs>
+  );
+};
+
+const configureRoutes = (match: match) => {
+  const getPath = (path: string) => match.url + path;
+
+  return {
+    home: {
+      path: getPath('/home'),
+      icon: homeOutline,
+      iconActive: home,
+      title: 'Home',
+    },
+    favourites: {
+      path: getPath('/favourites'),
+      icon: bookmarkOutline,
+      iconActive: bookmark,
+      title: 'Favourites',
+    },
+  };
+};
+
+export default Tabs;
