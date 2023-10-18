@@ -1,0 +1,15 @@
+ion-tab-button {
+  & .selected {
+    display: none;
+  }
+}
+
+:global(.tab-selected) {
+  .selected {
+    display: initial !important;
+  }
+
+  .unselected {
+    display: none;
+  }
+}

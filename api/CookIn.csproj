@@ -21,7 +21,7 @@
     <!-- Docker Configuration -->
     <ContainerRepository>denny09310/cook-in</ContainerRepository>
     <ContainerRuntimeIdentifier>linux-arm64</ContainerRuntimeIdentifier>
-    <ContainerImageTags>1.0.3.3;latest</ContainerImageTags>
+    <ContainerImageTags>1.0.3.4;latest</ContainerImageTags>
   </PropertyGroup>
 
   <ItemGroup>
