@@ -1,10 +1,21 @@
 import { IonIcon, IonRouterOutlet, IonTabBar, IonTabButton, IonTabs } from '@ionic/react';
-import { bookmark, bookmarkOutline, home, homeOutline } from 'ionicons/icons';
+import {
+  bookmark,
+  bookmarkOutline,
+  home,
+  homeOutline,
+  person,
+  personOutline,
+  search,
+  searchOutline,
+} from 'ionicons/icons';
 import React from 'react';
 import { Redirect, Route, RouteComponentProps, match } from 'react-router';
 
+import Account from '~/pages/Account';
 import Favourites from '~/pages/Favourites';
 import Home from '~/pages/Home';
+import Search from '~/pages/Search';
 import styles from './Tabs.module.scss';
 
 const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
@@ -15,6 +26,8 @@ const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
       <IonRouterOutlet>
         <Route path={routes.home.path} component={Home} exact />
         <Route path={routes.favourites.path} component={Favourites} exact />
+        <Route path={routes.search.path} component={Search} exact />
+        <Route path={routes.account.path} component={Account} exact />
         <Redirect from="/tabs" to={routes.home.path} exact />
       </IonRouterOutlet>
 
@@ -45,6 +58,18 @@ const configureRoutes = (match: match) => {
       icon: bookmarkOutline,
       iconActive: bookmark,
       title: 'Favourites',
+    },
+    search: {
+      path: getPath('/search'),
+      icon: searchOutline,
+      iconActive: search,
+      title: 'Search',
+    },
+    account: {
+      path: getPath('/account'),
+      icon: personOutline,
+      iconActive: person,
+      title: 'Account',
     },
   };
 };
