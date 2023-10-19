@@ -1,18 +1,15 @@
-/// <reference types="vitest" />
-
-import { defineConfig } from 'vite';
 import path from 'node:path';
+import { defineConfig } from 'vite';
 
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
+import sass from 'vite-plugin-sass-dts';
 import pwa from './vite.config.pwa';
-import sass, { css } from './vite.config.sass';
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react(), legacy(), mkcert(), sass(), pwa()],
-  css,
   test: {
     globals: true,
     environment: 'jsdom',
@@ -20,7 +17,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '~': path.resolve(__dirname, 'src'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   build: {

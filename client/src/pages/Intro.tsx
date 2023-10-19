@@ -3,14 +3,13 @@ import React, { useRef, useState } from 'react';
 import { useEffectOnce } from 'react-use';
 import { SwiperContainer } from 'swiper/element';
 
-import IntroSlide from '~/components/IntroSlide';
-import { INTRO_SEEN_KEY } from '~/constants/storage';
-
-import introImage1 from '~/assets/on-boarding-1.png';
-import introImage2 from '~/assets/on-boarding-2.png';
-import introImage from '~/assets/on-boarding-3.png';
-import styles from './Intro.module.scss';
-import { useStorageSetter } from '~/app/storage';
+import { useStorageSetter } from '@/app/storage';
+import introImage1 from '@/assets/on-boarding-1.png';
+import introImage2 from '@/assets/on-boarding-2.png';
+import introImage from '@/assets/on-boarding-3.png';
+import IntroSlide from '@/components/IntroSlide';
+import { INTRO_SEEN_KEY } from '@/utils/constants';
+import styles from '@/theme/Intro.module.scss';
 
 const Intro: React.FC = () => {
   const router = useIonRouter();

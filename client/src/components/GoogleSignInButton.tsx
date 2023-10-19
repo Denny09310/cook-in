@@ -2,7 +2,7 @@ import { IonButton, IonIcon, useIonRouter, useIonToast } from '@ionic/react';
 import { signInWithPopup } from 'firebase/auth';
 import { logoGoogle } from 'ionicons/icons';
 
-import { auth, googleProvider } from '~/configs/firebase';
+import { auth, googleProvider } from '@/utils/firebase';
 
 interface Props extends React.ComponentProps<typeof IonButton> {}
 

@@ -34,6 +34,8 @@ var observer = new MutationObserver((_mutations, observer) => {
         icon: refresh,
         message: "There's an update!",
         buttons: [{ text: 'Reload', handler: updateSW }],
+        duration: 10000,
+        positionAnchor: 'main-tabs',
       }),
   });
 });

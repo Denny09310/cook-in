@@ -16,7 +16,7 @@ const DAYS_UNIT = 24 * 60;
 /**
  * The current version of the service worker.
  */
-const SERVICE_WORKER_VERSION = version;
+const SERVICE_WORKER_VERSION = DEBUG_MODE ? '0.0.0' : version;
 
 if (DEBUG_MODE) {
   console.debug(`Service worker version ${SERVICE_WORKER_VERSION} loading...`);
@@ -62,7 +62,9 @@ self.addEventListener('message', (event: { data: any; type: any; ports: any }) =
     // return the version of this service worker
     if ('GET_VERSION' === event.data.type) {
       if (DEBUG_MODE) {
-        console.debug(`${componentName}:: Returning the service worker version: ${SERVICE_WORKER_VERSION}`);
+        console.debug(
+          `${componentName}:: Returning the service worker version: ${SERVICE_WORKER_VERSION}`,
+        );
       }
       event.ports[0].postMessage(SERVICE_WORKER_VERSION);
     }

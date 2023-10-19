@@ -12,11 +12,11 @@ import {
 import React from 'react';
 import { Redirect, Route, RouteComponentProps, match } from 'react-router';
 
-import Account from '~/pages/Account';
-import Favourites from '~/pages/Favourites';
-import Home from '~/pages/Home';
-import Search from '~/pages/Search';
-import styles from './Tabs.module.scss';
+import Account from '@/pages/Account';
+import Favourites from '@/pages/Favourites';
+import Home from '@/pages/Home';
+import Search from '@/pages/Search';
+import styles from '@/theme/Tabs.module.scss';
 
 const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
   const routes = configureRoutes(match);
@@ -31,7 +31,7 @@ const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
         <Redirect from="/tabs" to={routes.home.path} exact />
       </IonRouterOutlet>
 
-      <IonTabBar slot="bottom">
+      <IonTabBar id="main-tabs" slot="bottom">
         {Object.values(routes).map(({ icon, iconActive, path, title }) => (
           <IonTabButton key={title} tab={title} href={path}>
             <IonIcon className={styles.selected} icon={iconActive} />

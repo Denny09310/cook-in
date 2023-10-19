@@ -1,5 +1,4 @@
-import globalClassNames from '../style.d';
-declare const classNames: typeof globalClassNames & {
+declare const classNames: {
   readonly 'slides-container': 'slides-container';
   readonly footer: 'footer';
   readonly 'skip-button': 'skip-button';

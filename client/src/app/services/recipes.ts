@@ -1,4 +1,4 @@
-import { api } from '~/app/api';
+import { api } from '@/app/api';
 export const addTagTypes = ['Recipes'] as const;
 const injectedRtkApi = api
   .enhanceEndpoints({

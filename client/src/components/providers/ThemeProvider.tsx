@@ -1,9 +1,9 @@
 import { PropsWithChildren, useEffect } from 'react';
 import { useMedia } from 'react-use';
 
-import { useStorage } from '~/app/storage';
-import { THEME_UI_KEY } from '~/constants/storage';
-import { ThemeContext, type Theme } from '~/contexts/ThemeContext';
+import { useStorage } from '@/app/storage';
+import { THEME_UI_KEY } from '@/utils/constants';
+import { ThemeContext, type Theme } from '@/contexts/ThemeContext';
 
 interface Props {
   defaultTheme?: Theme;

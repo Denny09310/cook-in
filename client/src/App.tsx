@@ -2,12 +2,12 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
-import { useStorageValue } from '~/app/storage';
-import Tabs from '~/components/Tabs';
-import { INTRO_SEEN_KEY } from '~/constants/storage';
-import { useAuth } from '~/contexts/AuthContext';
-import Intro from '~/pages/Intro';
-import Login from '~/pages/Login';
+import { useStorageValue } from '@/app/storage';
+import Tabs from '@/components/Tabs';
+import { INTRO_SEEN_KEY } from '@/utils/constants';
+import { useAuth } from '@/contexts/AuthContext';
+import Intro from '@/pages/Intro';
+import Login from '@/pages/Login';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -26,7 +26,7 @@ import '@ionic/react/css/text-alignment.css';
 import '@ionic/react/css/text-transformation.css';
 
 /* Theme variables */
-import '~/theme/variables.css';
+import '@/theme/variables.css';
 
 setupIonicReact();
 

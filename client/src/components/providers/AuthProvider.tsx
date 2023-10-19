@@ -1,8 +1,8 @@
 import { onAuthStateChanged, type User } from 'firebase/auth';
 import React, { PropsWithChildren, useEffect, useState } from 'react';
 
-import { auth } from '~/configs/firebase';
-import { AuthContext } from '~/contexts/AuthContext';
+import { auth } from '@/utils/firebase';
+import { AuthContext } from '@/contexts/AuthContext';
 
 const AuthProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [user, setUser] = useState<User | null>();
