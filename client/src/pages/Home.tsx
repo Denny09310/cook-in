@@ -1,44 +1,20 @@
 import {
-  InfiniteScrollCustomEvent,
   IonButton,
   IonButtons,
   IonContent,
   IonHeader,
   IonIcon,
-  IonInfiniteScroll,
-  IonInfiniteScrollContent,
-  IonLoading,
   IonPage,
-  IonRefresher,
-  IonRefresherContent,
   IonTitle,
   IonToolbar,
-  RefresherCustomEvent,
 } from '@ionic/react';
-import clsx from 'clsx';
-import React from 'react';
-
 import { menu, notifications } from 'ionicons/icons';
-import { useCounter } from 'react-use';
-import { useGetRecipesQuery } from '~/app/services/recipes';
-import RecipesList from '~/components/RecipesList';
-import styles from './Home.module.scss';
+import React from 'react';
+import clsx from 'clsx';
+
+import styles from '@/theme/Home.module.scss';
 
 const Home: React.FC = () => {
-  const [page, { inc: nextPage, reset }] = useCounter(1);
-
-  const { data, isLoading, refetch } = useGetRecipesQuery({ page, pageSize: 15 });
-
-  const handleRefresh = (e: RefresherCustomEvent) => {
-    reset();
-    refetch().then(e.detail.complete);
-  };
-
-  const handleInfinite = (e: InfiniteScrollCustomEvent) => {
-    nextPage();
-    refetch().then(() => e.target.complete());
-  };
-
   return (
     <IonPage>
       <IonHeader className="ion-no-border">
@@ -58,16 +34,7 @@ const Home: React.FC = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent>
-        <IonLoading isOpen={isLoading} />
-        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
-          <IonRefresherContent />
-        </IonRefresher>
-        <RecipesList data={data} />
-        <IonInfiniteScroll onIonInfinite={handleInfinite}>
-          <IonInfiniteScrollContent />
-        </IonInfiniteScroll>
-      </IonContent>
+      <IonContent className="ion-padding">UI goes here...</IonContent>
     </IonPage>
   );
 };
