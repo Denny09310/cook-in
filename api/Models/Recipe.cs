@@ -24,4 +24,7 @@ public class Recipe
 
     [InverseProperty(nameof(Ingredient.Recipe))]
     public virtual ICollection<Ingredient> Ingredients { get; set; } = new HashSet<Ingredient>();
+
+    [InverseProperty(nameof(Category.Recipes))]
+    public virtual ICollection<Category> Categories { get; set; } = new HashSet<Category>();
 }
