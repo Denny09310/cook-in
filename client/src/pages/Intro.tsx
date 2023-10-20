@@ -1,20 +1,19 @@
 import { IonButton, IonContent, IonPage, useIonRouter } from '@ionic/react';
 import React, { useRef, useState } from 'react';
-import { useEffectOnce } from 'react-use';
+import { useEffectOnce, useLocalStorage } from 'react-use';
 import { SwiperContainer } from 'swiper/element';
 
-import { useStorageSetter } from '@/app/storage';
 import introImage1 from '@/assets/on-boarding-1.png';
 import introImage2 from '@/assets/on-boarding-2.png';
 import introImage from '@/assets/on-boarding-3.png';
 import IntroSlide from '@/components/IntroSlide';
-import { INTRO_SEEN_KEY } from '@/utils/constants';
 import styles from '@/theme/Intro.module.scss';
+import { INTRO_SEEN_KEY } from '@/utils/constants';
 
 const Intro: React.FC = () => {
   const router = useIonRouter();
 
-  const { setValue: setIntroSeen } = useStorageSetter(INTRO_SEEN_KEY, false);
+  const [, setIntroSeen] = useLocalStorage(INTRO_SEEN_KEY, false);
 
   const [reachEnd, setReachEnd] = useState(false);
   const swiperContainerRef = useRef<SwiperContainer>(null);

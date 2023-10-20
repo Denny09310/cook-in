@@ -7,8 +7,6 @@ import store from '@/app/store';
 import AuthProvider from '@/components/providers/AuthProvider';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 
-import '@/service-worker.registration';
-
 register();
 
 const container = document.getElementById('root');
