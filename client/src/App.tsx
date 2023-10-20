@@ -2,12 +2,12 @@ import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
 
-import { useStorageValue } from '@/app/storage';
+import AppUpdateToast from '@/components/AppUpdateToast';
 import Tabs from '@/components/Tabs';
-import { INTRO_SEEN_KEY } from '@/utils/constants';
 import { useAuth } from '@/contexts/AuthContext';
 import Intro from '@/pages/Intro';
 import Login from '@/pages/Login';
+import { INTRO_SEEN_KEY } from '@/utils/constants';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -27,16 +27,15 @@ import '@ionic/react/css/text-transformation.css';
 
 /* Theme variables */
 import '@/theme/variables.css';
+import { useLocalStorage } from 'react-use';
 
 setupIonicReact();
 
 const App = () => {
   const { isAuthenticated } = useAuth();
-  const { loading, value: introSeen } = useStorageValue(INTRO_SEEN_KEY, false);
+  const [introSeen] = useLocalStorage(INTRO_SEEN_KEY, false);
 
   const redirectUrl = introSeen ? (isAuthenticated ? '/tabs' : '/login') : '/intro';
-
-  if (loading) return false;
 
   return (
     <IonApp>
@@ -50,6 +49,7 @@ const App = () => {
           <Redirect from="/" to={redirectUrl} exact />
         </IonRouterOutlet>
       </IonReactRouter>
+      <AppUpdateToast />
     </IonApp>
   );
 };
