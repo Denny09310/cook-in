@@ -7,7 +7,10 @@ const injectedRtkApi = api
   .injectEndpoints({
     endpoints: (build) => ({
       getRecipes: build.query<GetRecipesApiResponse, GetRecipesApiArg>({
-        query: (queryArg) => ({ url: `/api/recipes/`, params: { Page: queryArg.page, PageSize: queryArg.pageSize } }),
+        query: (queryArg) => ({
+          url: `/api/recipes/`,
+          params: { Page: queryArg.page, PageSize: queryArg.pageSize },
+        }),
         providesTags: ['Recipes'],
       }),
     }),
@@ -27,4 +30,4 @@ export type GetRecipesResponseRecipe = {
 export type GetRecipesResponse = {
   recipes?: GetRecipesResponseRecipe[];
 };
-export const { useGetRecipesQuery, useLazyGetRecipesQuery } = injectedRtkApi;
+export const { useGetRecipesQuery } = injectedRtkApi;
