@@ -1,15 +1,12 @@
 {
   "folders": [
-    {
-      "path": "../api"
-    },
-    {
-      "path": "../client"
-    },
-    {
-      "path": "../client/src"
-    }
-  ],
+	{
+		"path": "../client"
+	},
+	{
+		"path": "../client/src"
+	}
+],
   "settings": {
     "files.exclude": {
       "**/.git": true,
