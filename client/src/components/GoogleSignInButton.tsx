@@ -10,16 +10,18 @@ const GoogleSignInButton: React.FC<Props> = (props) => {
   const router = useIonRouter();
   const [present] = useIonToast();
 
-  const handleSignIn = () =>
-    signInWithPopup(auth, googleProvider)
-      .then(() => router.push('/', 'root', 'replace'))
-      .catch(() =>
-        present({
-          message: "Can't login with google at the moment. Try again later",
-          duration: 2500,
-          color: 'danger',
-        }),
-      );
+  const handleSignIn = async () => {
+    try {
+      await signInWithPopup(auth, googleProvider);
+      router.push('/tabs', 'root', 'replace');
+    } catch (error) {
+      present({
+        message: "Can't login with google at the moment. Try again later",
+        duration: 2500,
+        color: 'danger',
+      });
+    }
+  };
 
   return (
     <IonButton fill="outline" color="dark" onClick={handleSignIn} {...props}>
