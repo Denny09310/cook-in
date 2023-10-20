@@ -8,7 +8,7 @@ const HomeRecomendations = () => {
   const { data } = useGetRecipesQuery({ page: 1, pageSize: 10 });
 
   return (
-    <div>
+    <div className={styles.container}>
       <IonItem className={styles['link-to-recomendations']} lines="none" routerLink="#" detail>
         <IonLabel>
           <h2>Recomendations</h2>
