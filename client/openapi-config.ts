@@ -7,9 +7,12 @@ const config: ConfigFile = {
     'src/app/services/recipes.ts': {
       filterEndpoints: [/recipes?/i],
     },
+    'src/app/services/categories.ts': {
+      filterEndpoints: [/categories?/i],
+    },
   },
   tag: true,
-  hooks: { lazyQueries: true, mutations: true, queries: true },
+  hooks: true,
 };
 
 export default config;

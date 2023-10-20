@@ -1,5 +1,7 @@
 declare const classNames: {
-  readonly title: 'title';
-  readonly 'highlight-primary': 'highlight-primary';
+  readonly container: 'container';
+  readonly 'inner-container': 'inner-container';
+  readonly 'greetings-text': 'greetings-text';
+  readonly 'search-bar': 'search-bar';
 };
 export = classNames;
