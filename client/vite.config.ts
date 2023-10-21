@@ -4,12 +4,26 @@ import { defineConfig } from 'vite';
 import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
+import { VitePWA as pwa } from 'vite-plugin-pwa';
 import sass from 'vite-plugin-sass-dts';
-import pwa from './vite.config.pwa';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), legacy(), mkcert(), sass(), pwa()],
+  plugins: [
+    react(),
+    legacy(),
+    mkcert(),
+    sass(),
+    pwa({
+      strategies: 'injectManifest',
+      srcDir: 'src',
+      filename: 'service-worker.ts',
+      devOptions: {
+        enabled: true,
+        type: 'module',
+      },
+    }),
+  ],
   test: {
     globals: true,
     environment: 'jsdom',
@@ -23,9 +37,10 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: (id) => {
-          if (/@ionic|@stencil/i.test(id)) return 'ionic';
-          if (/redux|rtk/i.test(id)) return 'redux';
+        manualChunks: {
+          redux: ['@reduxjs/toolkit', 'react-redux', ''],
+          swiper: ['swiper'],
+          ionic: ['@ionic/react', '@ionic/react-router'],
         },
       },
     },
