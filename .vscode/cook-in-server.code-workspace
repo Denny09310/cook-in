@@ -1,6 +1,11 @@
 {
   "folders": [
     {
+      "name": "cook-in",
+      "path": ".."
+    },
+    {
+      "name": "api",
       "path": "../api"
     }
   ],
