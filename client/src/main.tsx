@@ -2,12 +2,10 @@ import { createRoot } from 'react-dom/client';
 import { Provider as ReduxStoreProvider } from 'react-redux';
 import { register } from 'swiper/element/bundle';
 
-import App from '~/App';
-import store from '~/app/store';
-import AuthProvider from '~/components/providers/AuthProvider';
-import ThemeProvider from '~/components/providers/ThemeProvider';
-
-import '~/service-worker.registration';
+import App from '@/App';
+import store from '@/app/store';
+import AuthProvider from '@/components/providers/AuthProvider';
+import ThemeProvider from '@/components/providers/ThemeProvider';
 
 register();
 

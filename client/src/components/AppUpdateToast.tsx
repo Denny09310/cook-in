@@ -1,16 +1,14 @@
+import { IonToast } from '@ionic/react';
 import { refresh } from 'ionicons/icons';
-import { registerSW } from 'virtual:pwa-register';
-
-import toast from './utils/toast';
+import { useRegisterSW } from 'virtual:pwa-register/react';
 
 const intervalMS = 60 * 60 * 1000;
 
-var observer = new MutationObserver((_mutations, observer) => {
-  if (!document.querySelector('ion-app')) return;
-
-  observer.disconnect();
-
-  const updateSW = registerSW({
+const AppUpdateToast = () => {
+  const {
+    updateServiceWorker,
+    needRefresh: [needRefresh],
+  } = useRegisterSW({
     onRegisteredSW(swUrl, r) {
       r &&
         setInterval(async () => {
@@ -29,13 +27,17 @@ var observer = new MutationObserver((_mutations, observer) => {
           if (resp?.status === 200) await r.update();
         }, intervalMS);
     },
-    onNeedRefresh: () =>
-      toast({
-        icon: refresh,
-        message: "There's an update!",
-        buttons: [{ text: 'Reload', handler: updateSW }],
-      }),
   });
-});
 
-observer.observe(document.body, { childList: true, subtree: true });
+  return (
+    <IonToast
+      icon={refresh}
+      message="There's an update!"
+      buttons={[{ text: 'Reload', handler: updateServiceWorker }]}
+      duration={10000}
+      positionAnchor="main-tabs"
+    />
+  );
+};
+
+export default AppUpdateToast;

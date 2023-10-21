@@ -2,10 +2,9 @@ import { IonContent, IonImg, IonPage, IonText } from '@ionic/react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import FacebookSignInButton from '~/components/FacebookSignInButton';
-import GoogleSignInButton from '~/components/GoogleSignInButton';
-
-import styles from './Login.module.scss';
+import FacebookSignInButton from '@/components/FacebookSignInButton';
+import GoogleSignInButton from '@/components/GoogleSignInButton';
+import styles from '@/theme/Login.module.scss';
 
 const Login: React.FC = () => {
   return (

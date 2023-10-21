@@ -1,72 +1,31 @@
-import {
-  InfiniteScrollCustomEvent,
-  IonButton,
-  IonButtons,
-  IonContent,
-  IonHeader,
-  IonIcon,
-  IonInfiniteScroll,
-  IonInfiniteScrollContent,
-  IonLoading,
-  IonPage,
-  IonRefresher,
-  IonRefresherContent,
-  IonTitle,
-  IonToolbar,
-  RefresherCustomEvent,
-} from '@ionic/react';
+import { IonContent, IonPage, IonSearchbar, IonText } from '@ionic/react';
 import clsx from 'clsx';
 import React from 'react';
 
-import { menu, notifications } from 'ionicons/icons';
-import { useCounter } from 'react-use';
-import { useGetRecipesQuery } from '~/app/services/recipes';
-import RecipesList from '~/components/RecipesList';
-import styles from './Home.module.scss';
+import { useAuth } from '@/contexts/AuthContext';
+import styles from '@/theme/Home.module.scss';
+
+import HomeCategoriesFilters from '@/components/home/HomeCategoriesFilters';
+import HomeHeader from '@/components/home/HomeHeader';
+import HomeRecomendations from '@/components/home/HomeRecomendations';
 
 const Home: React.FC = () => {
-  const [page, { inc: nextPage, reset }] = useCounter(1);
-
-  const { data, isLoading, refetch } = useGetRecipesQuery({ page, pageSize: 15 });
-
-  const handleRefresh = (e: RefresherCustomEvent) => {
-    reset();
-    refetch().then(e.detail.complete);
-  };
-
-  const handleInfinite = (e: InfiniteScrollCustomEvent) => {
-    nextPage();
-    refetch().then(() => e.target.complete());
-  };
+  const { user } = useAuth();
 
   return (
     <IonPage>
-      <IonHeader className="ion-no-border">
-        <IonToolbar>
-          <IonButtons slot="start">
-            <IonButton>
-              <IonIcon slot="icon-only" icon={menu} />
-            </IonButton>
-          </IonButtons>
-          <IonTitle class={clsx('ion-text-center', styles.title)}>
-            Cook<span className={styles['highlight-primary']}>In</span>
-          </IonTitle>
-          <IonButtons slot="end">
-            <IonButton>
-              <IonIcon slot="icon-only" icon={notifications} />
-            </IonButton>
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent>
-        <IonLoading isOpen={isLoading} />
-        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
-          <IonRefresherContent />
-        </IonRefresher>
-        <RecipesList data={data} />
-        <IonInfiniteScroll onIonInfinite={handleInfinite}>
-          <IonInfiniteScrollContent />
-        </IonInfiniteScroll>
+      <HomeHeader />
+      <IonContent className={styles.container}>
+        <div className={styles['inner-container']}>
+          <IonText className={clsx('ion-padding', styles['greetings-text'])}>
+            <h2>Hi {user?.displayName} !</h2>
+            <p>What do you want to cook today</p>
+          </IonText>
+          <IonSearchbar className={styles['search-bar']} />
+          <HomeCategoriesFilters />
+        </div>
+
+        <HomeRecomendations />
       </IonContent>
     </IonPage>
   );

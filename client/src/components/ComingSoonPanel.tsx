@@ -1,7 +1,7 @@
 import { IonButton, IonIcon } from '@ionic/react';
 import { home } from 'ionicons/icons';
 
-import styles from './ComingSoonPanel.module.scss';
+import styles from '@/theme/ComingSoonPanel.module.scss';
 
 const ComingSoonPanel = () => {
   return (

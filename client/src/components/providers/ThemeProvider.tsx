@@ -1,9 +1,8 @@
 import { PropsWithChildren, useEffect } from 'react';
-import { useMedia } from 'react-use';
+import { useLocalStorage, useMedia } from 'react-use';
 
-import { useStorage } from '~/app/storage';
-import { THEME_UI_KEY } from '~/constants/storage';
-import { ThemeContext, type Theme } from '~/contexts/ThemeContext';
+import { THEME_UI_KEY } from '@/utils/constants';
+import { ThemeContext, type Theme } from '@/contexts/ThemeContext';
 
 interface Props {
   defaultTheme?: Theme;
@@ -15,10 +14,7 @@ const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
   storageKey = THEME_UI_KEY,
   children,
 }) => {
-  const {
-    loading,
-    state: [theme, setTheme],
-  } = useStorage(storageKey, defaultTheme);
+  const [theme, setTheme] = useLocalStorage(storageKey, defaultTheme);
 
   const prefersDarkScheme = useMedia('(prefers-color-scheme: dark)');
 
@@ -30,9 +26,11 @@ const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({
 
   const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
-  if (loading) return false;
-
-  return <ThemeContext.Provider value={{ theme, isDark, setTheme, toggleTheme }}>{children}</ThemeContext.Provider>;
+  return (
+    <ThemeContext.Provider value={{ theme: theme ?? defaultTheme, isDark, setTheme, toggleTheme }}>
+      {children}
+    </ThemeContext.Provider>
+  );
 };
 
 export default ThemeProvider;

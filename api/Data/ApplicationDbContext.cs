@@ -10,4 +10,5 @@ public class ApplicationDbContext : DbContext
 
     public DbSet<Recipe> Recipes => Set<Recipe>();
     public DbSet<Ingredient> Ingredients => Set<Ingredient>();
+    public DbSet<Category> Categories => Set<Category>();
 }

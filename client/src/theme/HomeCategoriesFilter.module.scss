@@ -1,0 +1,14 @@
+.container {
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  ion-chip {
+    width: 100%;
+
+    & * {
+      width: 100%;
+      text-align: center;
+    }
+  }
+}
