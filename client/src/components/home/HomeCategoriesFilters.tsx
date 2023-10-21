@@ -1,8 +1,8 @@
-import { useGetCategoriesQuery } from '@/app/services/categories';
-import { IonChip, IonItem, IonLabel, IonText } from '@ionic/react';
+import styled from '@emotion/styled';
+import { IonChip, IonItem, IonLabel } from '@ionic/react';
 import { Fragment, useEffect, useState } from 'react';
 
-import styles from '@/theme/HomeCategoriesFilter.module.scss';
+import { useGetCategoriesQuery } from '@/app/services/categories';
 
 const CategoriesFilters = () => {
   const { data } = useGetCategoriesQuery();
@@ -15,17 +15,17 @@ const CategoriesFilters = () => {
 
   return (
     <Fragment>
-      <div className={styles.container}>
+      <Container>
         {data?.categories?.map(({ id, name }) => (
           <IonChip
             key={id}
-            color={selectedCategory === name ? 'primary' : 'tertiary'}
+            color={selectedCategory === name ? 'primary' : 'secondary'}
             onClick={() => setSelectedCategory(name)}
           >
-            <IonText>{name}</IonText>
+            <IonLabel>{name}</IonLabel>
           </IonChip>
         ))}
-      </div>
+      </Container>
       <IonItem lines="none" routerLink="#" detail>
         <IonLabel>
           <h2>All Recipe</h2>
@@ -36,3 +36,15 @@ const CategoriesFilters = () => {
 };
 
 export default CategoriesFilters;
+
+const Container = styled.div`
+  display: grid;
+  align-content: center;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 0 0.5rem;
+
+  & ion-chip {
+    display: flex;
+    justify-content: center;
+  }
+`;

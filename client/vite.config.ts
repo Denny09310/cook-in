@@ -5,7 +5,6 @@ import legacy from '@vitejs/plugin-legacy';
 import react from '@vitejs/plugin-react';
 import mkcert from 'vite-plugin-mkcert';
 import { VitePWA as pwa } from 'vite-plugin-pwa';
-import sass from 'vite-plugin-sass-dts';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -13,7 +12,6 @@ export default defineConfig({
     react(),
     legacy(),
     mkcert(),
-    sass(),
     pwa({
       strategies: 'injectManifest',
       srcDir: 'src',

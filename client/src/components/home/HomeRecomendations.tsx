@@ -1,20 +1,20 @@
+import styled from '@emotion/styled';
 import { IonItem, IonLabel } from '@ionic/react';
 
 import { useGetRecipesQuery } from '@/app/services/recipes';
-import styles from '@/theme/HomeRecomendations.module.scss';
 import HomeRecomendationCard from './HomeRecomendationCard';
 
 const HomeRecomendations = () => {
   const { data } = useGetRecipesQuery({ page: 1, pageSize: 10 });
 
   return (
-    <div className={styles.container}>
-      <IonItem className={styles['link-to-recomendations']} lines="none" routerLink="#" detail>
+    <Container>
+      <LinkToRecommendations lines="none" routerLink="#" detail>
         <IonLabel>
           <h2>Recomendations</h2>
         </IonLabel>
         <IonLabel slot="end">View all</IonLabel>
-      </IonItem>
+      </LinkToRecommendations>
 
       <swiper-container slides-per-view="2.15">
         {data?.recipes?.map((recipe) => (
@@ -23,8 +23,17 @@ const HomeRecomendations = () => {
           </swiper-slide>
         ))}
       </swiper-container>
-    </div>
+    </Container>
   );
 };
 
 export default HomeRecomendations;
+
+const Container = styled.div`
+  flex: 1;
+  background-color: var(--ion-color-light);
+`;
+
+const LinkToRecommendations = styled(IonItem)`
+  --background: transparent;
+`;

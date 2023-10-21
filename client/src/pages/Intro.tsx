@@ -1,3 +1,4 @@
+import styled from '@emotion/styled';
 import { IonButton, IonContent, IonPage, useIonRouter } from '@ionic/react';
 import React, { useRef, useState } from 'react';
 import { useEffectOnce, useLocalStorage } from 'react-use';
@@ -7,7 +8,6 @@ import introImage1 from '@/assets/on-boarding-1.png';
 import introImage2 from '@/assets/on-boarding-2.png';
 import introImage from '@/assets/on-boarding-3.png';
 import IntroSlide from '@/components/IntroSlide';
-import styles from '@/theme/Intro.module.scss';
 import { INTRO_SEEN_KEY } from '@/utils/constants';
 
 const Intro: React.FC = () => {
@@ -21,10 +21,10 @@ const Intro: React.FC = () => {
   useEffectOnce(() => {
     const swiper = swiperContainerRef.current!;
 
-    swiper.className = styles['slides-container'];
     swiper.pagination = {
       type: 'bullets',
     };
+
     swiper.addEventListener('reachend', handleReachEnd);
 
     return () => {
@@ -47,7 +47,7 @@ const Intro: React.FC = () => {
   return (
     <IonPage>
       <IonContent>
-        <swiper-container ref={swiperContainerRef}>
+        <swiper-container ref={swiperContainerRef} style={{ height: '90%', width: '100%' }}>
           <IntroSlide
             image={introImage1}
             title="Cook with available ingredients"
@@ -64,24 +64,50 @@ const Intro: React.FC = () => {
             caption="Explore recipes by searching the ingredients available at home"
           />
         </swiper-container>
-        <div className={styles.footer}>
-          <IonButton className={styles['skip-button']} fill="clear" onClick={handleFinish}>
+        <Footer>
+          <IonButton className="skip-button" fill="clear" onClick={handleFinish}>
             Skip
           </IonButton>
 
           {!reachEnd ? (
-            <IonButton className={styles['next-button']} onClick={handleNext}>
+            <IonButton className="next-button" onClick={handleNext}>
               Next
             </IonButton>
           ) : (
-            <IonButton className={styles['next-button']} onClick={handleFinish}>
+            <IonButton className="next-button" onClick={handleFinish}>
               Finish
             </IonButton>
           )}
-        </div>
+        </Footer>
       </IonContent>
     </IonPage>
   );
 };
 
 export default Intro;
+
+const Footer = styled.div`
+  width: 100%;
+  padding: 1rem;
+
+  position: absolute;
+  bottom: 1rem;
+
+  display: inline-flex;
+  justify-content: space-between;
+
+  & ion-button {
+    --padding-start: 2rem;
+    --padding-end: 2rem;
+    --padding-top: 1rem;
+    --padding-bottom: 1rem;
+  }
+
+  & .skip-button {
+    --color: var(--ion-text-color);
+  }
+
+  & .next-button {
+    --box-shadow: none;
+  }
+`;

@@ -99,6 +99,18 @@ swiper-slide img {
   max-height: 100%;
 }
 
+ion-tab-button .selected {
+  display: none;
+}
+
+ion-tab-button.tab-selected .selected {
+  display: initial !important;
+}
+
+ion-tab-button.tab-selected .unselected {
+  display: none;
+}
+
 /*
 * Dark Colors
 * -------------------------------------------

@@ -1,8 +1,13 @@
-import { IonButton, IonButtons, IonHeader, IonIcon, IonTitle, IonToolbar } from '@ionic/react';
-import clsx from 'clsx';
+import styled from '@emotion/styled';
+import {
+  IonButton,
+  IonButtons,
+  IonHeader,
+  IonIcon,
+  IonTitle as IonTitlePrimitive,
+  IonToolbar,
+} from '@ionic/react';
 import { menu, notifications } from 'ionicons/icons';
-
-import styles from '@/theme/HomeHeader.module.scss';
 
 const HomeHeader = () => {
   return (
@@ -13,8 +18,8 @@ const HomeHeader = () => {
             <IonIcon slot="icon-only" icon={menu} />
           </IonButton>
         </IonButtons>
-        <IonTitle class={clsx('ion-text-center', styles.title)}>
-          Cook<span className={styles['highlight-primary']}>In</span>
+        <IonTitle className="ion-text-center">
+          Cook<span>In</span>
         </IonTitle>
         <IonButtons slot="end">
           <IonButton>
@@ -27,3 +32,11 @@ const HomeHeader = () => {
 };
 
 export default HomeHeader;
+
+export const IonTitle = styled(IonTitlePrimitive)`
+  font-weight: bold;
+
+  & span {
+    color: var(--ion-color-primary);
+  }
+`;

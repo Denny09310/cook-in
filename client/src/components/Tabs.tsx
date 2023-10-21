@@ -16,7 +16,6 @@ import Account from '@/pages/Account';
 import Favourites from '@/pages/Favourites';
 import Home from '@/pages/Home';
 import Search from '@/pages/Search';
-import styles from '@/theme/Tabs.module.scss';
 
 const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
   const routes = configureRoutes(match);
@@ -34,14 +33,16 @@ const Tabs: React.FC<RouteComponentProps> = ({ match }) => {
       <IonTabBar id="main-tabs" slot="bottom">
         {Object.values(routes).map(({ icon, iconActive, path, title }) => (
           <IonTabButton key={title} tab={title} href={path}>
-            <IonIcon className={styles.selected} icon={iconActive} />
-            <IonIcon className={styles.unselected} icon={icon} />
+            <IonIcon className="selected" icon={iconActive} />
+            <IonIcon className="unselected" icon={icon} />
           </IonTabButton>
         ))}
       </IonTabBar>
     </IonTabs>
   );
 };
+
+export default Tabs;
 
 const configureRoutes = (match: match) => {
   const getPath = (path: string) => match.url + path;
@@ -73,5 +74,3 @@ const configureRoutes = (match: match) => {
     },
   };
 };
-
-export default Tabs;
